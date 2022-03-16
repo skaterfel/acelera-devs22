@@ -5,9 +5,8 @@
     var ctx = canvas.getContext('2d');
 
     function desenha(xini, yini, xend, yend, color){
-        cor = ctx.fillStyle = color;
-        rect = ctx.fillRect(xini, yini, xend, yend);
-        return (cor, rect)
+        ctx.fillStyle = color;
+        ctx.fillRect(xini, yini, xend, yend);
     }
 
     desenha(100,50,350,300, 'darkgreen'); // cabeça
