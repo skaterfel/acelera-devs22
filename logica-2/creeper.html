@@ -1,0 +1,21 @@
+<canvas width="600" height="400"></canvas>
+
+<script>
+    var canvas = document.querySelector('canvas');
+    var ctx = canvas.getContext('2d');
+
+    function desenha(xini, yini, xend, yend, color){
+        cor = ctx.fillStyle = color;
+        rect = ctx.fillRect(xini, yini, xend, yend);
+        return (cor, rect)
+    }
+
+    desenha(100,50,350,300, 'darkgreen'); // cabeça
+    desenha(150, 100, 90, 90, 'black' ); //olho esquerdo
+    desenha(310, 100, 90, 90, 'black' ); //olho direito
+    desenha(240, 190, 70, 100, 'black' ); //nariz
+    desenha(200, 240, 40, 110, 'black' ); //boca esquerdo
+    desenha(310, 240, 40, 110, 'black' ); //boca direito
+    
+
+</script>
