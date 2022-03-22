@@ -1,0 +1,42 @@
+<canvas width="600" height="500"></canvas>
+<script>
+    const canvas = document.querySelector('canvas')
+    const ctx = canvas.getContext('2d')
+
+    ctx.fillStyle = 'lightgray'
+    ctx.fillRect(0, 0, canvas.width, canvas.height)
+    cores = ['blue', 'red', 'green']
+    iCor = 0
+    function desenhaCirculo(e){
+        x = e.pageX - canvas.offsetLeft
+        y = e.pageY - canvas.offsetTop
+
+        ctx.fillStyle = cores[iCor]
+        ctx.beginPath()
+        ctx.arc(x, y, 10, 0, 2*3.14)
+        ctx.fill()
+
+    }
+    
+    function mudaCor(){
+        iCor++
+        if(iCor >= cores.length){
+            iCor = 0
+        }
+        return false
+    }
+    /*function mudaCor(){
+        if(corAtual == 'blue'){
+            corAtual = 'red'
+        } else if(corAtual == 'red'){
+            corAtual = 'green'
+        } else if(corAtual == 'green'){
+            corAtual = 'blue'
+        }
+        return false
+    }
+
+    */
+    canvas.onclick = desenhaCirculo
+    canvas.oncontextmenu = mudaCor
+</script>

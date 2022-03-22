@@ -1,0 +1,24 @@
+<canvas width="600" height="500"></canvas>
+<script>
+    const canvas = document.querySelector('canvas')
+    const ctx = canvas.getContext('2d')
+
+    ctx.fillStyle = 'lightgray'
+    ctx.fillRect(0, 0, canvas.width, canvas.height)
+
+    function desenhaCirculo(e){
+        var x = e.pageX - canvas.offsetLeft
+        var y = e.pageY - canvas.offsetTop
+        
+        ctx.fillStyle = '#00CC00'
+        ctx.beginPath()
+        ctx.arc(x, y, 10, 0, 2*3.14)
+        ctx.fill()
+        
+        console.log(`
+        Cordenada X: ${x}.
+        Cordenada Y: ${y}.`)
+    }
+
+    canvas.onclick = desenhaCirculo
+</script>
