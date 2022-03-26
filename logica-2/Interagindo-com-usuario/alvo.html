@@ -1,0 +1,45 @@
+<canvas width="600" height="400"></canvas>
+
+<script>
+
+    const canvas = document.querySelector('canvas');
+    const ctx = canvas.getContext('2d');
+
+    ctx.fillStyle = 'lightgray';
+    ctx.fillRect(0, 0, 600, 400);
+
+    var raio = 10;
+
+    function desenhaCirculo(x, y, raio, cor) {
+
+        ctx.fillStyle = cor;
+        ctx.beginPath();
+        ctx.arc(x, y, raio, 0, 2 * Math.PI);
+        ctx.fill();
+    }
+
+    desenhaCirculo(300,200, raio + 20, 'red'); // maior círculo
+    desenhaCirculo(300,200, raio + 10, 'white');
+    desenhaCirculo(300,200, raio, 'red'); // menor circulo
+
+    function dispara(e) {
+
+        var x = e.pageX - canvas.offsetLeft;
+        var y = e.pageY - canvas.offsetTop;
+
+       console.log(x, y)
+
+       if(  x > 300 - raio &&
+            x < 300 + raio &&
+            y > 200 - raio &&
+            y < 200 + raio)
+                            {
+           alert('Boa!')
+       }
+
+    }
+
+    canvas.onclick = dispara;
+
+
+</script>

@@ -1,0 +1,59 @@
+<canvas width="600" height="500"></canvas>
+<script>
+    const canvas = document.querySelector('canvas')
+    const ctx = canvas.getContext('2d')
+
+    var telaX = canvas.width
+    var telaY = canvas.height
+
+    console.log(`${telaX} | ${telaY}`)
+
+    function brasil(){
+        ctx.fillStyle = 'green'
+        ctx.fillRect(0, 0, canvas.width, canvas.height)
+
+        ctx.fillStyle = 'yellow'
+        ctx.beginPath()
+        ctx.moveTo(telaX/2-200, telaY/2)
+        ctx.lineTo(telaX/2+200, telaY/2) 
+        ctx.lineTo(telaX/2, telaY/2-150)
+        ctx.fill()
+        
+        ctx.fillStyle = 'yellow'
+        ctx.beginPath()
+        ctx.moveTo(telaX/2-200, telaY/2)
+        ctx.lineTo(telaX/2+200, telaY/2) 
+        ctx.lineTo(telaX/2, telaY/2+150)
+        ctx.fill()
+
+        ctx.fillStyle = 'blue'
+        ctx.beginPath()
+        ctx.arc(telaX/2, telaY/2, 75, 0, 2*Math.PI)
+        ctx.fill()
+    }
+
+    function alemanha(){
+        ctx. fillStyle = 'black'
+        ctx.fillRect(0, 0, telaX, telaY/3)
+
+        ctx. fillStyle = 'red'
+        ctx.fillRect(0, telaY/3, telaX, telaY/3)
+       
+        ctx. fillStyle = 'yellow'
+        ctx.fillRect(0, telaY-telaY/3, telaX, telaY/3)
+    }
+    var band = 'Brasil'
+    function trocaBandeira(){
+        
+        if(band == 'Brasil'){
+            brasil()
+            band = 'Alemanha'
+        } else if(band == 'Alemanha'){
+            alemanha()
+            band = 'Brasil'
+        }
+    }
+    
+    alemanha()
+    setInterval(trocaBandeira, 3000)
+</script>

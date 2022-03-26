@@ -1,0 +1,28 @@
+<canvas width="600" height="500"></canvas>
+<script>
+    const canvas = document.querySelector('canvas')
+    const ctx = canvas.getContext('2d')
+    var x = 20
+    var direcao = true
+    function desenhaCirculo(x, y){
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
+        ctx.fillStyle = 'lightgreen'
+        ctx.beginPath()
+        ctx.arc(x, y, 10, 0, 2*Math.PI)
+        ctx.fill()
+    }
+    function moveCirculo(){
+        desenhaCirculo(x, 20)
+        if(x >= 600){
+            direcao = false
+        } else if(x <= 20){
+            direcao = true
+        }
+        if(direcao){
+            x=x+10
+        } else {
+            x=x-10
+        }
+    }
+    setInterval(moveCirculo, 0)  
+</script>

@@ -1,0 +1,30 @@
+<canvas width="600" height="600"></canvas>
+<script>
+    const canvas = document.querySelector('canvas')
+    const ctx = canvas.getContext('2d')
+
+    let x = 20
+
+
+    function bolinha(x, y, raio){
+        ctx.fillStyle = '#dead24'
+        ctx.beginPath()
+        ctx.arc(x, y, raio, 0, 2*Math.PI)
+        ctx.fill()
+    }
+    function limpaTela(){
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
+    }
+    function atualiza(){
+        limpaTela()
+        bolinha(x, 20, 10)
+        x++
+        if(x > 600){
+            x = 0
+        }
+    }
+
+    setInterval(atualiza, 10)
+
+
+</script>

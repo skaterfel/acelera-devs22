@@ -1,0 +1,67 @@
+<canvas width="600" height="600"></canvas>
+<script>
+    // Alvo Aleatorio que da Alerta quando acertado
+
+
+    const canvas = document.querySelector('canvas')
+    const ctx = canvas. getContext('2d')
+
+    // Variaveis Fixas
+    var raio = 10
+    var xCanvas
+    var yCanvas
+
+    function fundo(){
+        ctx.fillStyle = 'lightgray'
+        ctx.fillRect(0,0,canvas.width, canvas.height)
+    }
+
+    function circulo(x, y, raio, cor){
+        ctx.fillStyle = cor
+        ctx.beginPath()
+        ctx.arc(x, y, raio, 0, 2*Math.PI)
+        ctx.fill()
+    }
+
+    function alvo(){
+        limpa()
+        fundo()
+        xCanvas = sorteio(canvas.width)
+        yCanvas = sorteio(canvas.height)
+        circulo(xCanvas, yCanvas, raio+20, 'red')
+        circulo(xCanvas, yCanvas, raio+10, 'white')
+        circulo(xCanvas, yCanvas, raio, 'red')
+    
+    }
+
+    function limpa(){
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
+    }
+
+    function sorteio(max){
+        return Math.floor(Math.random() * max )
+    }
+
+  
+
+    function clickMouse(e){
+        var xMouse = e.pageX - canvas.offsetLeft
+        var yMouse = e.pageY - canvas.offsetTop
+        
+        if(
+            (xMouse > xCanvas - raio) &&
+            (xMouse < xCanvas + raio) &&
+            (yMouse > yCanvas - raio) &&
+            (yMouse < yCanvas + raio)){
+                console.log('Acerto')
+
+        }
+
+
+    }
+
+    setInterval(alvo, 999)
+    canvas.onclick = clickMouse
+    
+    
+</script>

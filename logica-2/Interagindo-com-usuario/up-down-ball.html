@@ -1,0 +1,33 @@
+<canvas width="600" height="600"></canvas>
+<script>
+    const canvas = document.querySelector('canvas')
+    const ctx = canvas.getContext('2d')
+
+    ctx.fillStyle = '#ccc'
+    ctx.fillRect(0, 0, canvas.width, canvas.height)
+
+    var tam = 10
+
+    function desenhaBola(e){
+        var x = e.pageX - canvas.offsetLeft
+        var y = e.pageY - canvas.offsetTop
+        
+        if(e.shiftKey && tam + 10 <= 40){
+            return tam = tam + 10
+        } else if(e.altKey && tam - 5 >= 10){
+            return tam = tam - 5
+        }
+
+        console.log(tam)
+        ctx.fillStyle = '#00cc00'
+        ctx.beginPath()
+        ctx.arc(x, y, tam, 0, 2*3.14)
+        ctx.fill()
+
+        
+    }
+    
+    canvas.onclick = desenhaBola
+    
+
+</script>

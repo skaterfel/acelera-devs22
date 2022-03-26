@@ -1,0 +1,60 @@
+<canvas width="600" height="600"></canvas>
+<script>
+    const canvas = document.querySelector('canvas')
+    const ctx = canvas.getContext('2d')
+
+    ctx.fillStyle = 'lightgray'
+    ctx.fillRect(0, 0, canvas.width, canvas.height)
+    var raio = 10
+    var acertou = false
+    var xAleatorio = sorteia(canvas.width)
+    var yAleatorio = sorteia(canvas.height)
+
+    function desenhaCirculo(x, y, raio, cor){
+        ctx.fillStyle = cor
+        ctx.beginPath()
+        ctx.arc(x, y, raio, 0, 2*Math.PI)
+        ctx.fill()
+    }
+
+    function desenhaAlvo(){
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
+        ctx.fillStyle = 'lightgray'
+        ctx.fillRect(0, 0, canvas.width, canvas.height)
+        
+        desenhaCirculo(xAleatorio, yAleatorio, raio+20, 'red')
+        desenhaCirculo(xAleatorio, yAleatorio, raio+10, 'white')
+        desenhaCirculo(xAleatorio, yAleatorio, raio, 'red')
+        
+
+    }
+
+    function sorteia(max){
+        return Math.floor(Math.random() * max)
+
+    }
+
+    function mouseLocation(e){
+       var mouseX = e.pageX - canvas.offsetLeft
+       var mouseY = e.pageY - canvas.offsetTop
+       
+       console.log(mouseX)
+       console.log(mouseY)
+       console.log(xAleatorio)
+       console.log(yAleatorio)
+       if(
+           mouseX <= xAleatorio - 5 &&
+           mouseX >= xAleatorio + 5 &&
+           mouseY <= yAleatorio - 5 &&
+           mouseY >= yAleatorio + 5){
+               return acertou = true
+           } else {
+               return acertou = false
+           }
+            
+    }
+
+    setInterval(desenhaAlvo, 2000)
+    document.onmousedown = mouseLocation
+
+</script>
